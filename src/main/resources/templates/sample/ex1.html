@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>ex1</h1>
+   <h3>[[${list}]]</h3>
+<!--/*  <h3 th:text="${list[4]}"></h3> */-->
+
+  <h2 >LIST 보여주기 -- 1</h2>
+  <h2 th:text="${list22}">LIST 보여주기 -- 2</h2>
+
+  <div th:with="max = ${100}">
+      <h2>링크 테스트
+          <a th:href="@{/view(keyword=${list}, name ='홍길동',limit =${max} )}"></a>
+      </h2>
+  </div>
+
+<div th:with="num1 = ${10}, num2 = ${20} ">
+    <h1>[[${num1 + num2}]]</h1>
+</div>
+
+<ul>
+    <th:block th:each="str,status: ${list}">
+    <li th:text="${status.odd} ?'ODD ---'+${str}"></li>
+    </th:block>
+</ul>
+
+<ul>
+  <li th:each="str,status: ${list}">[[${status.count}]] ----------[[${str}]]</li>
+</ul>
+
+</body>
+</html>
