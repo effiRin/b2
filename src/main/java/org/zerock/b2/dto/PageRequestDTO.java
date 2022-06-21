@@ -11,9 +11,8 @@ import org.springframework.data.domain.Sort;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-
-@Data
 @Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PageRequestDTO {
@@ -65,4 +64,8 @@ public class PageRequestDTO {
         }
         return link;
     }
+
+
+
+
 }

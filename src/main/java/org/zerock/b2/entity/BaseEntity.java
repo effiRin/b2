@@ -11,15 +11,14 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-@EntityListeners(value = {AuditingEntityListener.class})   //
+@EntityListeners(value = { AuditingEntityListener.class })
 @Getter
 public class BaseEntity {
 
     @CreatedDate
-    @Column(name = "regdate", updatable = false)    // 생성할 때만 갱신 가능하고 이후에 갱신 불가능
+    @Column(name = "regdate", updatable = false)
     private LocalDateTime regDate;
 
     @LastModifiedDate
-    private LocalDateTime modDate;   //
-
+    private LocalDateTime modDate;
 }

@@ -14,6 +14,6 @@ public interface ReplyService {
 
     void remove(Long rno);
 
-    PageResponseDTO<ReplyDTO> getListOfBoard(Integer bno, PageRequestDTO pageRequestDTO);  // 파라미터가 2개 들어가는 기능 - 댓글 페이징
+    PageResponseDTO<ReplyDTO> getListOfBoard(Integer bno, PageRequestDTO pageRequestDTO);
 
 }

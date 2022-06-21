@@ -24,7 +24,7 @@ public class SampleController {
     public void hello(Model model){
 
         model.addAttribute("msg", "반갑습니다.");
-        log.info("=============hello");
+        log.info("===========hello");
 
     }
 
@@ -36,20 +36,20 @@ public class SampleController {
         model.addAttribute("list", list);
 
     }
-
     @GetMapping("/ex2")
     public void ex2(Model model, RedirectAttributes rttr){
 
-        Map<String, String> map =
-                Map.of("key1", "value1", "key2", "value2");
+        Map<String,String> map =
+                Map.of("key1", "value1", "key2","value2");
 
         model.addAttribute("result", map);
 
         List<String> list =
-                IntStream.rangeClosed(10,20).mapToObj(value -> "DATA--" + value)
+                IntStream.rangeClosed(10,20).mapToObj(value -> "DATA--"+value)
                         .collect(Collectors.toList());
 
         model.addAttribute("list", list);
+
     }
 
     @GetMapping("/ex3")

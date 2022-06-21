@@ -2,6 +2,7 @@ package org.zerock.b2.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -18,7 +19,7 @@ public class SwaggerConfig {
                 .useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("org.zerock.b2.controller"))
-                // 경로 설정
+
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());

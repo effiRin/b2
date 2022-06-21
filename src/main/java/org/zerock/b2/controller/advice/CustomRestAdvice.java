@@ -15,9 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-
 @RestControllerAdvice
 @Log4j2
+
 public class CustomRestAdvice {
 
     @ExceptionHandler(BindException.class)
@@ -67,4 +67,7 @@ public class CustomRestAdvice {
         errorMap.put("msg",  "No Such Element Exception");
         return ResponseEntity.badRequest().body(errorMap);
     }
+
+
+
 }

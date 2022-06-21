@@ -4,6 +4,7 @@ buildscript {
     }
 }
 
+
 plugins {
     id 'org.springframework.boot' version '2.6.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -33,15 +34,17 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     // https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+
 
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
 
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+
+    implementation 'org.modelmapper:modelmapper:3.1.0'
 
     annotationProcessor(
 
@@ -51,18 +54,18 @@ dependencies {
 
             "com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
 
-    implementation 'org.modelmapper:modelmapper:3.1.0'
-
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-}
 
+    implementation 'net.coobird:thumbnailator:0.4.16'
+}
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
 
 sourceSets {
     main {

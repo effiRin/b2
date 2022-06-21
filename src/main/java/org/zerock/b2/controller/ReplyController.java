@@ -1,13 +1,13 @@
 package org.zerock.b2.controller;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.http.MediaType;
 import org.zerock.b2.dto.PageRequestDTO;
 import org.zerock.b2.dto.PageResponseDTO;
 import org.zerock.b2.dto.ReplyDTO;
@@ -19,7 +19,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/replies")
 @Log4j2
-@RequiredArgsConstructor // 주입이 필요하니까 추가
+@RequiredArgsConstructor
 public class ReplyController {
 
     private final ReplyService replyService;
@@ -35,12 +35,11 @@ public class ReplyController {
         if(bindingResult.hasErrors()){
             throw new BindException(bindingResult);
         }
-            //예외는 리턴 대신 쓴다는 개념을 염두하자!
 
-        Long rno = replyService.register(replyDTO); // 에러가 없다면 if를 지나 여기로
+        Long rno = replyService.register(replyDTO);
 
         return Map.of("rno", rno);
-    } // controller니까 서버를 띄워서 swagger ui로 확인
+    }
 
     @ApiOperation(value = "Replies of Board", notes = "GET 방식으로 특정 게시물의 댓글 목록")
     @GetMapping(value = "/list/{bno}")
@@ -80,4 +79,6 @@ public class ReplyController {
 
         return Map.of("rno", rno);
     }
+
+
 }

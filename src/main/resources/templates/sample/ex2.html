@@ -5,18 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-
 <div>[[${list}]]</div>
 <div>[[${result}]]</div>
 
 <script th:inline="javascript">
-<!-- 위의 자바스크립트 인라인 하나 써주면 됨 -->
 
     const arr = [[${list}]]
     const result = [[${result}]]
     const temp = [[${temp}]]
 
 </script>
+
 
 </body>
 </html>

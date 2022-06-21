@@ -1,6 +1,7 @@
 package org.zerock.b2.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class ReplyDTO {
 
     private Long rno;
 
-    @NotNull   // javax.validation
+    @NotNull
     private Integer bno;
 
     @NotEmpty
@@ -27,10 +28,11 @@ public class ReplyDTO {
     @NotEmpty
     private String replyer;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime regDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonIgnore
     private LocalDateTime modDate;
+
 
 }

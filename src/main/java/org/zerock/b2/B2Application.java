@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-@EnableJpaAuditing   // auding 기능을 활성화하겠다
+@EnableJpaAuditing
 public class B2Application {
 
     public static void main(String[] args) {

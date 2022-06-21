@@ -2,8 +2,7 @@ package org.zerock.b2.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -22,5 +21,6 @@ public class CustomServletConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/css/");
         registry.addResourceHandler("/assets/**").
                 addResourceLocations("classpath:/static/assets/");
+
     }
 }

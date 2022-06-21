@@ -38,58 +38,60 @@
 
 
     <div class="col">
-        <div class="card">
-            <div class="card-header">
-                Board List
-            </div>
-            <div class="card-body" >
-                <h5 class="card-title">Board List </h5>
-
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Bno</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Writer</th>
-                        <th scope="col">RegDate</th>
-                    </tr>
-                    </thead>
-                    <tbody th:with="link = ${pageRequestDTO.getLink()}">
-                    <tr th:each="dto:${responseDTO.dtoList}"  >
-                        <th scope="row">[[${dto.bno}]]</th>
-                        <td>
-                            <a th:href="|@{/board/read(bno =${dto.bno})}&${link}|"> [[${dto.title}]] <b>[[${dto.replyCount}]]</b> </a>
-                        </td>
-                        <td>[[${dto.writer}]]</td>
-                        <td>[[${#temporals.format(dto.regDate, 'yyyy-MM-dd')}]]</td>
-                    </tr>
-
-                    </tbody>
-                </table>
-
-                <div class="float-end">
-                    <ul class="pagination flex-wrap">
-
-                        <li class="page-item" th:if="${responseDTO.prev}">
-                            <a class="page-link" th:data-num="${responseDTO.start -1}">Previous</a>
-                        </li>
-
-                        <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
-                            <li th:class="${responseDTO.page == i}?'page-item active':'page-item'" >
-                                <a class="page-link"  th:data-num="${i}">[[${i}]]</a>
-                            </li>
-                        </th:block>
-
-                        <li class="page-item" th:if="${responseDTO.next}">
-                            <a class="page-link"  th:data-num="${responseDTO.end + 1}">Next</a>
-                        </li>
-                    </ul>
+            <div class="card">
+                <div class="card-header">
+                    Board List
                 </div>
+                <div class="card-body" >
+                    <h5 class="card-title">Board List </h5>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Bno</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Writer</th>
+                            <th scope="col">RegDate</th>
+                        </tr>
+                        </thead>
+                        <tbody th:with="link = ${pageRequestDTO.getLink()}">
+                        <tr th:each="dto:${responseDTO.dtoList}"  >
+                            <th scope="row">[[${dto.bno}]]</th>
+                            <td>
+                                <img th:if="${dto.imgPath != null}" th:src="${dto.imgPath}">
+                                <a th:href="|@{/board/read(bno =${dto.bno})}&${link}|"> [[${dto.title}]] <b>[ [[${dto.replyCount}]] ]</b></a>
+                            </td>
+                            <td>[[${dto.writer}]]</td>
+                            <td>[[${#temporals.format(dto.regDate, 'yyyy-MM-dd')}]]</td>
+                        </tr>
 
 
-            </div><!--end card body-->
-        </div><!--end card-->
-    </div><!-- end col-->
+                        </tbody>
+                    </table>
+
+                    <div class="float-end">
+                        <ul class="pagination flex-wrap">
+
+                            <li class="page-item" th:if="${responseDTO.prev}">
+                                <a class="page-link" th:data-num="${responseDTO.start -1}">Previous</a>
+                            </li>
+
+                            <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
+                                <li th:class="${responseDTO.page == i}?'page-item active':'page-item'" >
+                                    <a class="page-link"  th:data-num="${i}">[[${i}]]</a>
+                                </li>
+                            </th:block>
+
+                            <li class="page-item" th:if="${responseDTO.next}">
+                                <a class="page-link"  th:data-num="${responseDTO.end + 1}">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div><!--end card body-->
+            </div><!--end card-->
+        </div><!-- end col-->
 
     <div class="modal" tabindex="-1">
         <div class="modal-dialog">
@@ -109,7 +111,14 @@
         </div>
     </div>
 
-</div><!-- end row-->
+
+    </div><!-- end row-->
+</div>
+
+
+
+
+
 </div>
 
 
@@ -143,14 +152,19 @@
 
     },false)
 
+
     //show modal
     const result = [[${result}]]
+
+
+    console.log(document.querySelector(".modal"))
 
     const modal = new bootstrap.Modal(document.querySelector(".modal"))
 
     if(result){
         modal.show()
     }
+
 
 </script>
 
